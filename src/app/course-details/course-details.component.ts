@@ -17,7 +17,7 @@ export class CourseDetailsComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log('hello `CourseDetails` component');
+    console.log('`CourseDetails` component');
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */

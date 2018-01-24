@@ -3,7 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../app.service';
+import { AppState } from 'app/app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log('hello `Home` component');
+    console.log('`Home` component');
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */

@@ -2,7 +2,7 @@ import {
   Component,
 } from '@angular/core';
 
-import { AppState } from '../../../app.service';
+import { AppState } from 'app/app.service';
 
 @Component({
   selector: 'logo',

@@ -3,11 +3,11 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../../app.service';
-import { Title } from './../../home/title';
+import { AppState } from 'app/app.service';
+import { Title } from 'app/home/title';
 
 @Component({
-  selector: 'footer',
+  selector: 'app-footer',
   providers: [
     Title
   ],
@@ -22,7 +22,7 @@ export class FooterComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log('hello `Footer` component');
+    console.log('`Footer` component');
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */

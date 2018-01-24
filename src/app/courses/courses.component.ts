@@ -6,7 +6,7 @@ import {
 import { AppState } from '../app.service';
 
 @Component({
-  selector: 'auth',
+  selector: 'courses',
   styleUrls: [ './courses.component.css' ],
   templateUrl: './courses.component.html'
 })
@@ -17,7 +17,7 @@ export class CoursesComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log('hello `Courses` component');
+    console.log('`Courses` component');
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */

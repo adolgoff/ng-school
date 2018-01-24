@@ -3,17 +3,15 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../../app.service';
-import { Title } from './../../home/title';
-import { XLargeDirective } from './x-large';
+import { AppState } from 'app/app.service';
+import { Title } from 'app/home/title';
 
 @Component({
-  selector: 'header',
+  selector: 'app-header',
   providers: [
     Title
   ],
-  styles: [],
-  template: `<div></div>`
+  template: `<header></header>`
 })
 export class HeaderComponent implements OnInit {
   public localState = { value: '' };
@@ -23,7 +21,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log('hello `Header` component');
+    console.log('`Header` component');
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */

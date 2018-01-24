@@ -3,7 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../app.service';
+import { AppState } from 'app/app.service';
 
 @Component({
   selector: 'auth',
@@ -17,7 +17,7 @@ export class AuthComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log('hello `Auth` component');
+    console.log('`Auth` component');
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */
