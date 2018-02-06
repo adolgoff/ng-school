@@ -22,7 +22,7 @@ export class FooterComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log('`Footer` component');
+    console.log('`Footer` component initialized');
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */

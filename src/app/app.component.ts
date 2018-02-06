@@ -19,7 +19,6 @@ import { AppState } from './app.service';
     <main>
       <router-outlet></router-outlet>
     </main>
-    <app-footer></app-footer>
   `
 })
 export class AppComponent implements OnInit {

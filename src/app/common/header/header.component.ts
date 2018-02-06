@@ -11,7 +11,8 @@ import { Title } from 'app/home/title';
   providers: [
     Title
   ],
-  template: `<header></header>`
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.css']
 })
 export class HeaderComponent implements OnInit {
   public localState = { value: '' };
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log('`Header` component');
+    console.log('`Header` component initialized');
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */

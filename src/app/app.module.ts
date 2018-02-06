@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,15 +17,20 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
+import { CoursesListComponent } from './courses-list/courses-list.component';
 import { HeaderComponent } from './common/header/header.component';
+import { LogoComponent } from './common/header/logo/logo.component';
+import { ToolbarComponent } from './common/toolbar/toolbar.component';
+import { AuthSectionComponent } from './common/header/auth-section/auth-section.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { CoursesThumbnailComponent } from './common/course-thumbnail/course-thumbnail.component';
 // import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 // import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
-import '../styles/headings.css';
+import '../styles/headings.scss';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -47,9 +54,14 @@ type StoreType = {
     // AboutComponent,
     HomeComponent,
     HeaderComponent,
+    CoursesListComponent,
+    CoursesThumbnailComponent,
+    LogoComponent,
+    ToolbarComponent,
+    AuthSectionComponent,
     FooterComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
   ],
   /**
    * Import Angular's modules.
@@ -58,6 +70,7 @@ type StoreType = {
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,

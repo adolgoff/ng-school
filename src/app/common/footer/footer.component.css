@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  align-items: center;
+  font-size: .9em; 
+  color: rgba(0,0,0,.3);
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  height: 50px;
+  border-top: 1px solid rgba(0,0,0,.2);
+}

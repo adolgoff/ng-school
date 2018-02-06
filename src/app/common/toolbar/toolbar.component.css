@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  padding: 15px;
+}
+
+:host > form {
+  display: block;
+}
+
+:host > button {
+  margin-left: auto;
+  display: block;
+}

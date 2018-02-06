@@ -1,0 +1,17 @@
+<img src="{{courseDetail.thumbnail}}" alt="">
+<div class="description">
+  <header><a href="{{courseDetail.permalink}}">{{courseDetail.title}}</a></header>
+  <section>
+    {{courseDetail.description}}
+  </section>
+  <footer>
+    Author: {{courseDetail.author.first}} {{courseDetail.author.last}}
+  </footer>
+</div>
+<div class="details">
+  <div>
+    Duration: {{courseDetail.length}}
+  </div>
+  <button (click)="editCourse($event)">Edit</button>
+  <button (click)="deleteCourse($event)">Delete</button>
+</div>

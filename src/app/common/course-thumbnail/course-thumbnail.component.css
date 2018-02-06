@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  width: calc(100% - 30px);
+  min-height: 50px;
+  border-top: 1px solid rgba(0,0,0,.3);
+  margin: 5px 10px;
+  padding: 5px;
+}
+
+header, section {
+  margin-bottom: 10px;
+}
+
+footer {
+  font-size: .8em;
+}
+
+.description {
+  margin: 0 10px;
+}
+
+.details {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  font-size: .8em;
+  margin-left:auto;
+  text-align: right;
+}
+
+.details div {
+  margin-bottom: 10px;
+}
+
+.details button {
+  margin-top: 5px; 
+}
