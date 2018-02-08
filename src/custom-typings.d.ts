@@ -122,6 +122,14 @@ interface ErrorStackTraceLimit {
   stackTraceLimit: number;
 }
 
+interface HTMLDialogElement extends HTMLElement {
+  open: Boolean;
+  returnValue: string;
+  show(): void;
+  close(result?): void;
+  showModal(): void;
+}
+
 // Extend typings
 interface NodeRequire extends WebpackRequire {}
 interface ErrorConstructor extends ErrorStackTraceLimit {}

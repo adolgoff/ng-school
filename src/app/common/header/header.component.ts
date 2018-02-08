@@ -1,30 +1,25 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Input,
 } from '@angular/core';
-
-import { AppState } from 'app/app.service';
-import { Title } from 'app/home/title';
+import { AuthService } from 'app/services/auth.service';
 
 @Component({
   selector: 'app-header',
-  providers: [
-    Title
-  ],
+  providers: [ AuthService ],
   templateUrl: 'header.component.html',
   styleUrls: ['header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public localState = { value: '' };
-  constructor(
-    public appState: AppState,
-    public title: Title
-  ) {}
+  public isAuth: boolean = false;
+  @Input() public pageTitle: string = 'Angular Courses';
+
+  constructor(private authService: AuthService) {}
 
   public ngOnInit() {
     console.log('`Header` component initialized');
-    /**
-     * this.title.getData().subscribe(data => this.data = data);
-     */
+    this.isAuth = this.authService.isAuthenticated();
+    console.log(this.pageTitle);
   }
 }

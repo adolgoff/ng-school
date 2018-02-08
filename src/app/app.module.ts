@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
-
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -17,17 +15,15 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { CoursesListComponent } from './courses-list/courses-list.component';
+import { LoginComponent } from './login/login.component';
+import { CoursesListComponent } from './courses/courses-list/courses-list.component';
+import { CoursesThumbnailComponent } from './courses/course-thumbnail/course-thumbnail.component';
 import { HeaderComponent } from './common/header/header.component';
 import { LogoComponent } from './common/header/logo/logo.component';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { AuthSectionComponent } from './common/header/auth-section/auth-section.component';
 import { FooterComponent } from './common/footer/footer.component';
-import { CoursesThumbnailComponent } from './common/course-thumbnail/course-thumbnail.component';
-// import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
-// import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
 import '../styles/headings.scss';
@@ -45,13 +41,13 @@ type StoreType = {
 };
 
 /**
- * `AppModule` is the main entry point into Angular2's bootstraping process
+ * Main entry point into Angular2's bootstraping process
  */
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    // AboutComponent,
+    LoginComponent,
     HomeComponent,
     HeaderComponent,
     CoursesListComponent,
@@ -61,7 +57,6 @@ type StoreType = {
     AuthSectionComponent,
     FooterComponent,
     NoContentComponent,
-    XLargeDirective,
   ],
   /**
    * Import Angular's modules.
@@ -71,18 +66,10 @@ type StoreType = {
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    HttpModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
-
-    /**
-     * This section will import the `DevModuleModule` only in certain build types.
-     * When the module is not imported it will get tree shaked.
-     * This is a simple example, a big app should probably implement some logic
-     */
-    // ...environment.showDevModule ? [ DevModuleModule ] : [],
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

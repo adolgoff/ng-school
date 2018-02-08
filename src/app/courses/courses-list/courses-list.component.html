@@ -1,0 +1,14 @@
+<course-thumbnail *ngFor="let course of coursesList" 
+  [courseDetail]="course" 
+  [class.deleted]="course.deleted" 
+  (edit)="editCourse($event)"
+  (delete)="deleteCourse($event, dialog)">
+</course-thumbnail>
+
+<dialog #dialog>
+  <header>Course <strong>"{{titleToDelete}}"</strong> is goint to be deleted.<br>Are you sure?</header>
+  <div class="buttons">
+    <button (click)="approveDeleting($event, dialog)" (keyup)="onKey($event, dialog)">Yes, fock that</button>
+    <button (click)="cancelDeleting($event, dialog)" (keyup)="onKey($event, dialog)">No, fock that</button>
+  </div>
+</dialog>

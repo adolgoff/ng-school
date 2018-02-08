@@ -1,0 +1,11 @@
+<app-header [pageTitle]="'Login'"></app-header>
+<div>
+  <form action="#" (submit)="login($event)">
+    <input type="text" placeholder="Username" [(ngModel)]="username" name="username">
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+    <button type="submit">Login</button>
+  </form>
+  <a href="#">Forgot password</a>
+  <a href="#">Sign on</a>
+</div>
+<app-footer></app-footer>

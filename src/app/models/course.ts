@@ -1,14 +1,16 @@
 import { Author } from './author';
 
-export interface CoursesList extends Array<Course>{}
+export interface CoursesList extends Array<Course> {}
 
 export interface Course {
-  id: Number;
+  id: number;
+  guid: string;
   author: Author;
-  title: String;
-  description: String;
-  date: Number;
-  length: Number;
-  permalink: String;
-  thumbnail: String;
+  title: string;
+  description: string;
+  date: number;
+  length: number;
+  permalink: string;
+  thumbnail: string;
+  deleted: boolean;
 }

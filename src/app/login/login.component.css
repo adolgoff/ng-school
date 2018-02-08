@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+:host div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding: 50px;
+  margin: 100px auto;
+  width: 200px;
+  background: rgba(0,0,0,.1);
+}
+
+:host div form {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+:host div form * {
+  font-size: 13px;
+}
+
+:host div form button,
+:host div form input {
+  margin-bottom: 5px;
+}
