@@ -13,4 +13,5 @@ export interface Course {
   permalink: string;
   thumbnail: string;
   deleted: boolean;
+  top: boolean;
 }

@@ -67,6 +67,7 @@ dll/
 
 
 # Angular #
+.angulardoc.json
 *.ngfactory.ts
 *.css.shim.ts
 *.ngsummary.json

@@ -7,7 +7,9 @@ export type InternalStateType = {
 @Injectable()
 export class AppState {
 
-  public _state: InternalStateType = { };
+  public _state: InternalStateType = {
+    'search.value': '',
+  };
 
   /**
    * Already return a clone of the current state.

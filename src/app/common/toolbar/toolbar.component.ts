@@ -1,3 +1,4 @@
+import { AppState } from 'app/app.service';
 import {
   Component,
   EventEmitter,
@@ -11,9 +12,17 @@ import {
 
 export class ToolbarComponent {
   public searchString: string = '';
-  // @Output() public search = new EventEmitter();
+
+  constructor(private appState: AppState) {}
 
   public search() {
-    console.log(this.searchString);
+    this.appState.set('search.value', this.searchString);
+  }
+
+  public onKey(event: KeyboardEvent, form: HTMLFormElement) {
+    if (event.key === 'Escape') {
+      form.reset();
+      this.appState.set('search.value', this.searchString);
+    }
   }
 }

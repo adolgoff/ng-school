@@ -1,3 +1,8 @@
+.no-results {
+  line-height: 145px;
+  text-align: center;
+}
+
 dialog {
   display: none;
   flex-direction: column;

@@ -1,5 +1,6 @@
-<form action="" (submit)="search($event);">
-  <input type="text" [(value)]="searchString">
+<form action="" (submit)="search($event);" #searchform>
+  <input type="text" (keyup)="onKey($event, searchform)"
+    [(ngModel)]="searchString" name="searchString" autocomplete="off">
   <button type="submit">Search</button>
 </form>
 

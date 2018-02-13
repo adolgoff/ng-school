@@ -2,8 +2,10 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { CoursesList, Course } from 'app/models/course';
 import { CoursesService } from 'app/services/courses.service';
+import { AppState } from 'app/app.service';
 
 @Component({
   selector: 'courses-list',
@@ -12,17 +14,19 @@ import { CoursesService } from 'app/services/courses.service';
   providers: [CoursesService],
 })
 export class CoursesListComponent implements OnInit {
-  public coursesList: CoursesList;
+  public coursesList: CoursesList = [];
+  public emptyList: boolean = true;
+  public titleToDelete: string = '';
   private courseToDelete: Course;
-  private titleToDelete: string = '';
-
   constructor(
+    public appState: AppState,
     private courseService: CoursesService,
   ) {}
 
   public async ngOnInit() {
     console.log('`Courses list` component initialized');
     this.coursesList = await this.courseService.getList();
+    this.emptyList = this.coursesList.every((item) => item.deleted);
   }
 
   public editCourse(courseObj: Course) {
@@ -38,9 +42,8 @@ export class CoursesListComponent implements OnInit {
 
   public async approveDeleting(event: Event, dialog: any) {
     await this.courseService.removeItem(this.courseToDelete.id);
-    // this.coursesList = this.coursesList.filter((item) =>
-    // item.id !== this.courseToDelete.id);
     this.courseToDelete.deleted = true;
+    this.emptyList = this.coursesList.every((item) => item.deleted);
     this.courseToDelete = null;
     this.titleToDelete = null;
     dialog.close();
