@@ -1,13 +1,11 @@
-<course-thumbnail *ngFor="let course of coursesList | coursesSearchFilter:appState.state['search.value']"
-  [attr.upcoming]="(course.date | upcomingFilter) ? '' : null"
-  [attr.deleted]="course.deleted ? '' : null"
-  [attr.starred]="course.top ? '' : null"
+<course-thumbnail courseViewModificator *ngFor="let course of coursesList | coursesSearchFilter:appState.state['search.value']"
+  [deleted]="course.deleted"
   [courseDetail]="course"
   (edit)="editCourse($event)"
   (delete)="deleteCourse($event, dialog)">
 </course-thumbnail>
 
-<div class="no-results" *ngIf="emptyList">
+<div class="no-results" *ngIf="!(coursesList | coursesSearchFilter:appState.state['search.value']).length">
   Sorry, no courses is currently available!
 </div>
 

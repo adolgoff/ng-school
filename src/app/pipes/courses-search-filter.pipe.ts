@@ -5,13 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'coursesSearchFilter',
 })
 export class CoursesSearchFilter implements PipeTransform {
-  public transform(list: CoursesList, searchString: string): CoursesList {
-    if (!searchString) {
+  public transform(list: CoursesList, searchTerm: string): CoursesList {
+    if (!searchTerm) {
       return list;
     } else {
       return list.filter((course) =>
-        course.title.toLowerCase().indexOf(searchString.toLowerCase()) >= 0 ||
-        course.description.toLowerCase().indexOf(searchString.toLowerCase()) >= 0);
+        course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.description.toLowerCase().includes(searchTerm.toLowerCase()));
     }
   }
 }

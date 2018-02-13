@@ -6,13 +6,14 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /*
- * Platform and Environment providers/directives/pipes
- */
+* Platform and Environment providers/directives/pipes
+*/
 import { environment } from 'environments/environment';
 import { ROUTES } from './app.routes';
 import { UpcomingFilter } from './pipes/upcoming-filter.pipe';
 import { TimeFormat } from './pipes/time-format.pipe';
 import { CoursesSearchFilter } from './pipes/courses-search-filter.pipe';
+import { DecoratedCourseDirective } from './directives/decorated-course.directive';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
@@ -49,10 +50,11 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    // Pipes
+    // Pipes&Directives
     UpcomingFilter,
     TimeFormat,
     CoursesSearchFilter,
+    DecoratedCourseDirective,
     // Components
     AppComponent,
     LoginComponent,

@@ -8,7 +8,7 @@ export interface Course {
   author: Author;
   title: string;
   description: string;
-  date: number;
+  date: string;
   length: number;
   permalink: string;
   thumbnail: string;

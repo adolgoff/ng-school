@@ -15,7 +15,6 @@ import { AppState } from 'app/app.service';
 })
 export class CoursesListComponent implements OnInit {
   public coursesList: CoursesList = [];
-  public emptyList: boolean = true;
   public titleToDelete: string = '';
   private courseToDelete: Course;
   constructor(
@@ -26,7 +25,6 @@ export class CoursesListComponent implements OnInit {
   public async ngOnInit() {
     console.log('`Courses list` component initialized');
     this.coursesList = await this.courseService.getList();
-    this.emptyList = this.coursesList.every((item) => item.deleted);
   }
 
   public editCourse(courseObj: Course) {
@@ -43,7 +41,6 @@ export class CoursesListComponent implements OnInit {
   public async approveDeleting(event: Event, dialog: any) {
     await this.courseService.removeItem(this.courseToDelete.id);
     this.courseToDelete.deleted = true;
-    this.emptyList = this.coursesList.every((item) => item.deleted);
     this.courseToDelete = null;
     this.titleToDelete = null;
     dialog.close();
