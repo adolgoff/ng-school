@@ -3,6 +3,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Course } from 'app/models/course';
 
@@ -10,13 +11,13 @@ import { Course } from 'app/models/course';
   selector: 'course-thumbnail',
   styleUrls: [ 'course-thumbnail.component.css' ],
   templateUrl: 'course-thumbnail.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesThumbnailComponent {
   @Input() public courseDetail: Course;
-  @Input() public deleted: boolean = false;
   @Output() public edit = new EventEmitter();
   @Output() public delete = new EventEmitter();
-  
+
   public editCourse(event) {
     this.edit.emit(this.courseDetail);
   }
