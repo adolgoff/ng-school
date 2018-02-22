@@ -1,8 +1,9 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  OnDestroy,
 } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs/Rx';
 import { CoursesList, Course } from 'app/models/course';
 import { CoursesService } from 'app/services/courses.service';
 import { AppState } from 'app/app.service';
@@ -13,10 +14,11 @@ import { AppState } from 'app/app.service';
   templateUrl: 'courses-list.component.html',
   providers: [CoursesService],
 })
-export class CoursesListComponent implements OnInit {
+export class CoursesListComponent implements OnInit, OnDestroy {
   public coursesList: CoursesList = [];
   public titleToDelete: string = '';
   private courseToDelete: Course;
+  private coursesSubscription: Subscription;
   constructor(
     public appState: AppState,
     private courseService: CoursesService,
@@ -24,7 +26,12 @@ export class CoursesListComponent implements OnInit {
 
   public async ngOnInit() {
     console.log('`Courses list` component initialized');
-    this.coursesList = await this.courseService.getList();
+    this.coursesSubscription = this.courseService.getList()
+      .subscribe((list) => this.coursesList = list);
+  }
+
+  public async ngOnDestroy() {
+    this.coursesSubscription.unsubscribe();
   }
 
   public editCourse(courseObj: Course) {

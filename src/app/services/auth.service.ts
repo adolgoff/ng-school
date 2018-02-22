@@ -1,3 +1,4 @@
+import { Observable, BehaviorSubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -7,42 +8,52 @@ const USER_STORAGE_KEY: string = 'user';
 
 @Injectable()
 export class AuthService {
-  // TODO: make it promise to handle it asynchroniously
-  constructor(private httpClient: HttpClient) {}
-
+  private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  constructor(private http: HttpClient) {
+    if (this.isAuthenticated()) {
+      this.userSubject.next(this.getUserInfo());
+    }
+  }
   /**
    * Stores fake user info and token to local storage)
-   * @param {string} name 
-   * @param {string} password 
-   * @returns {Promise<User>} 
+   * @param {string} name
+   * @param {string} password
+   * @returns {Promise<User>}
    * @memberOf AuthService
    */
-  public async login(name: string, password: string): Promise<User> {
-    const user: User = {
-      email: 'johnsmith@yahoo.com',
-      first: 'John',
-      last: 'Smith',
-      guid: 'alskjhdF&F',
-      id: 210398,
-      nickname: 'johnsmith',
-      thumbnail: null,
-    };
-    localStorage.setItem('user', JSON.stringify(user));
-    return user;
+  public login(name: string, password: string): Observable<User> {
+    const userObservable: Observable<User> =
+      this.http.get<User>('/assets/mock-data/mock-user.json');
+
+    userObservable.subscribe((user) => {
+      this.userSubject.next(user);
+      localStorage.setItem('user', JSON.stringify(user));
+    });
+
+    return this.userSubject.asObservable();
   }
 
   /**
    * Wipes fake user info and token from local storage)
-   * @returns {Promise<boolean>} 
+   * @returns {Promise<boolean>}
    * @memberOf AuthService
    */
-  public async logout(): Promise<boolean> {
+  public logout(): boolean {
     localStorage.removeItem(USER_STORAGE_KEY);
+    this.userSubject.next(null);
     return true;
   }
 
   /**
-   * @returns {boolean} 
+   * @returns {Observable<User>}
+   * @memberOf AuthService
+   */
+  public getUserObservable(): Observable<User> {
+    return this.userSubject.asObservable();
+  }
+
+  /**
+   * @returns {boolean}
    * @memberOf AuthService
    */
   public isAuthenticated(): boolean {

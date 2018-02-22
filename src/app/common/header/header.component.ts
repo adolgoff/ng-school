@@ -1,3 +1,4 @@
+import { User } from 'app/models/user';
 import {
   Component,
   OnInit,
@@ -12,14 +13,14 @@ import { AuthService } from 'app/services/auth.service';
   styleUrls: ['header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public isAuth: boolean = false;
+  public user: User;
   @Input() public pageTitle: string = 'Angular Courses';
 
   constructor(private authService: AuthService) {}
 
   public ngOnInit() {
     console.log('`Header` component initialized');
-    this.isAuth = this.authService.isAuthenticated();
-    console.log(this.pageTitle);
+    this.authService.getUserObservable()
+      .subscribe((user: User) => this.user = user);
   }
 }

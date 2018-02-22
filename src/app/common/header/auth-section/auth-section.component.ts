@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AppState } from 'app/app.service';
 import { AuthService } from 'app/services/auth.service';
 import { Router } from '@angular/router';
@@ -10,13 +10,17 @@ import { Router } from '@angular/router';
   templateUrl: 'auth-section.component.html',
 })
 export class AuthSectionComponent {
+  @Input() public first: string;
+  @Input() public last: string;
+
   constructor(
     private authService: AuthService,
     private router: Router,
   ) {}
 
   public signOut() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+    if (this.authService.logout()) {
+      this.router.navigate(['/login']);
+    }
   }
 }

@@ -6,6 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CoursesSearchFilter implements PipeTransform {
   public transform(list: CoursesList, searchTerm: string): CoursesList {
+    if (!list) {
+      return [] as CoursesList;
+    }
     if (!searchTerm) {
       return list;
     } else {

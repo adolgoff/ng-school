@@ -21,6 +21,7 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login/login.component';
 import { CoursesListComponent } from './courses/courses-list/courses-list.component';
+import { CourseCreateComponent } from './courses/course-create/course-create.component';
 import { CoursesThumbnailComponent } from './courses/course-thumbnail/course-thumbnail.component';
 import { HeaderComponent } from './common/header/header.component';
 import { LogoComponent } from './common/header/logo/logo.component';
@@ -61,6 +62,7 @@ type StoreType = {
     HomeComponent,
     HeaderComponent,
     CoursesListComponent,
+    CourseCreateComponent,
     CoursesThumbnailComponent,
     LogoComponent,
     ToolbarComponent,
