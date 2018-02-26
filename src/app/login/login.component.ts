@@ -8,7 +8,6 @@ import { User } from 'app/models/user';
 
 @Component({
   selector: 'login',
-  providers: [ AuthService ],
   styleUrls: [ 'login.component.css' ],
   templateUrl: 'login.component.html'
 })

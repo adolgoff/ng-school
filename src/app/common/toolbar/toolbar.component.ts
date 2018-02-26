@@ -1,4 +1,4 @@
-import { AppState } from 'app/app.service';
+import { CoursesService } from 'app/services/courses.service';
 import {
   Component,
   EventEmitter,
@@ -13,16 +13,16 @@ import {
 export class ToolbarComponent {
   public searchString: string = '';
 
-  constructor(private appState: AppState) {}
+  constructor(private courseService: CoursesService) {}
 
   public search() {
-    this.appState.set('search.value', this.searchString);
+    this.courseService.getList(this.searchString);
   }
 
   public onKey(event: KeyboardEvent, form: HTMLFormElement) {
     if (event.key === 'Escape') {
       form.reset();
-      this.appState.set('search.value', this.searchString);
+      this.search();
     }
   }
 }

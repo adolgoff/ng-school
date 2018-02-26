@@ -1,7 +1,7 @@
 /**
  * Angular 2 decorators and services
  */
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { environment } from 'environments/environment';
 import { AppState } from './app.service';
 
@@ -21,15 +21,6 @@ import { AppState } from './app.service';
     </main>
   `
 })
-export class AppComponent implements OnInit {
-  public name = 'Angular Starter';
+export class AppComponent {
   public showDevModule: boolean = environment.showDevModule;
-
-  constructor(
-    public appState: AppState
-  ) {}
-
-  public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-  }
 }

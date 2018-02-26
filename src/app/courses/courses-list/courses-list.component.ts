@@ -12,7 +12,6 @@ import { AppState } from 'app/app.service';
   selector: 'courses-list',
   styleUrls: [ 'courses-list.component.css' ],
   templateUrl: 'courses-list.component.html',
-  providers: [CoursesService],
 })
 export class CoursesListComponent implements OnInit, OnDestroy {
   public coursesList: CoursesList = [];
@@ -25,7 +24,6 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   ) {}
 
   public async ngOnInit() {
-    console.log('`Courses list` component initialized');
     this.coursesSubscription = this.courseService.getList()
       .subscribe((list) => this.coursesList = list);
   }

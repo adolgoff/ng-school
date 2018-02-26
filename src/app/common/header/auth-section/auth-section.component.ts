@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'auth-section',
-  providers: [ AuthService ],
   styleUrls: ['auth-section.component.css'],
   templateUrl: 'auth-section.component.html',
 })

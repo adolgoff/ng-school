@@ -14,6 +14,7 @@ export class AuthService {
       this.userSubject.next(this.getUserInfo());
     }
   }
+
   /**
    * Stores fake user info and token to local storage)
    * @param {string} name
@@ -27,7 +28,7 @@ export class AuthService {
 
     userObservable.subscribe((user) => {
       this.userSubject.next(user);
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
     });
 
     return this.userSubject.asObservable();

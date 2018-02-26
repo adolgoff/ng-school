@@ -1,3 +1,6 @@
+import { CoursesService } from 'app/services/courses.service';
+import { AuthService } from 'app/services/auth.service';
+import { AuthorizedHttp } from 'app/services/authorized-http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +15,6 @@ import { environment } from 'environments/environment';
 import { ROUTES } from './app.routes';
 import { UpcomingFilter } from './pipes/upcoming-filter.pipe';
 import { TimeFormat } from './pipes/time-format.pipe';
-import { CoursesSearchFilter } from './pipes/courses-search-filter.pipe';
 import { DecoratedCourseDirective } from './directives/decorated-course.directive';
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -33,9 +35,12 @@ import { NoContentComponent } from './no-content';
 import '../styles/styles.scss';
 import '../styles/headings.scss';
 
-// Application wide providers
+// Application wide providers & services
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
+  AuthorizedHttp,
+  AuthService,
+  CoursesService,
   AppState
 ];
 
@@ -54,7 +59,6 @@ type StoreType = {
     // Pipes&Directives
     UpcomingFilter,
     TimeFormat,
-    CoursesSearchFilter,
     DecoratedCourseDirective,
     // Components
     AppComponent,
