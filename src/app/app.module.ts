@@ -1,3 +1,4 @@
+import { AuthorsService } from 'app/services/authors.service';
 import { CoursesService } from 'app/services/courses.service';
 import { AuthService } from 'app/services/auth.service';
 import { AuthorizedHttp } from 'app/services/authorized-http';
@@ -28,6 +29,7 @@ import { CoursesThumbnailComponent } from './courses/course-thumbnail/course-thu
 import { HeaderComponent } from './common/header/header.component';
 import { LogoComponent } from './common/header/logo/logo.component';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
+import { AuthorsListComponent } from './common/authors-list/authors-list.component'
 import { AuthSectionComponent } from './common/header/auth-section/auth-section.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { NoContentComponent } from './no-content';
@@ -41,6 +43,7 @@ const APP_PROVIDERS = [
   AuthorizedHttp,
   AuthService,
   CoursesService,
+  AuthorsService,
   AppState
 ];
 
@@ -70,6 +73,7 @@ type StoreType = {
     CoursesThumbnailComponent,
     LogoComponent,
     ToolbarComponent,
+    AuthorsListComponent,
     AuthSectionComponent,
     FooterComponent,
     NoContentComponent,

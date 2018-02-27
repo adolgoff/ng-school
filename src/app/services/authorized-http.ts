@@ -37,6 +37,7 @@ export class AuthorizedHttp {
     if (this.token) {
       this.headers = this.headers.append('Auth-Token', this.token);
     }
+    options = options || {};
     options.headers = this.headers;
     return this.http.get<T>(url, options);
   }

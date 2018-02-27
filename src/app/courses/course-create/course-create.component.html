@@ -3,26 +3,46 @@
   <h4>
     Enter your new course data:
   </h4>
-  <form action="#" (submit)="submit()">
-    <label for="title">Title</label>
-      <input type="text" placeholder="Title" maxlength="50" name="title">
-    <label for="description">Description</label>
-      <textarea name="description" maxlength="500" placeholder="Course description"></textarea>
-    <label for="date">Date</label>
-      <input type="text" name="date" placeholder="Date">
-    <label for="duration">Duration</label>
-      <input type="text" name="duration" placeholder="Duration">
-    <label for="authors">Authors</label>
-      <fieldset name="authors">
-        <label><input type="checkbox" name="Arnold Schwartzenegger" id="">Arnold Schwartzenegger</label>
-        <label><input type="checkbox" name="Isaac Asimov" id="">Isaac Asimov</label>
-        <label><input type="checkbox" name="Arthur C. Clarke" id="">Arthur C. Clarke</label>
-        <label><input type="checkbox" name="Ray Bradbury" id="">Ray Bradbury</label>
-      </fieldset>
-    <section>
-      <button type="submit">Create</button>
-      <button type="reset">Cancel</button>
-    </section>
+  <form action="#" #courseForm="ngForm" (ngSubmit)="submit()">
+
+    <div [attr.error]="title.errors && title.errors['required'] ? 'Title field is required' : null">
+      <label for="title">Title</label>
+      <input placeholder="Title" maxlength="50" name="title"
+      [(ngModel)]="course.title" required #title="ngModel">
+    </div>
+
+    <div [attr.error]="description.errors && description.errors['required'] ? 'Description field is required' : null">
+      <label for="description">Description</label>
+      <textarea name="description" maxlength="500" placeholder="Course description"
+      [(ngModel)]="course.description" required #description="ngModel">
+      </textarea>
+    </div>
+
+    <div [attr.error]="date.errors && date.errors['required'] ? 'Date field is required' : null">
+      <label for="date">Date</label>
+      <input type="date" name="date" placeholder="Date"
+      [(ngModel)]="course.date" required #date="ngModel">
+    </div>
+
+    <div [attr.error]="duration.errors && duration.errors['required'] ? 'Duration field is required' : null">
+      <label for="duration">Duration</label>
+      <input type="number" name="duration" placeholder="Duration"
+      [(ngModel)]="course.length" required #duration="ngModel">
+    </div>
+
+    <div [attr.error]="authors.errors && authors.errors['required'] ? 'At least one author should present' : null">
+      <label for="authors">Authors</label>
+      <authors-list name="authors" [(ngModel)]="course.author" #authors="ngModel">
+      </authors-list>
+    </div>
+
+    <div>
+      <label></label>
+      <section>
+        <button type="submit" (click)="submit(courseForm)" [disabled]="!courseForm.form.valid">Create</button>
+        <button type="reset">Cancel</button>
+      </section>
+    </div>
   </form>
 </div>
 <app-footer></app-footer>

@@ -1,17 +1,17 @@
-import { Author } from './author';
+// import { Author } from './author';
 
 export interface CoursesList extends Array<Course> {}
 
 export interface Course {
-  id: number;
-  guid: string;
-  author: Author;
-  title: string;
-  description: string;
-  date: string;
-  length: number;
-  permalink: string;
-  thumbnail: string;
-  deleted: boolean;
-  top: boolean;
+  id?: number;
+  guid?: string;
+  author?: string;
+  title?: string;
+  description?: string;
+  date?: string;
+  length?: number;
+  permalink?: string;
+  thumbnail?: string;
+  deleted?: boolean;
+  top?: boolean;
 }

@@ -1,0 +1,7 @@
+<fieldset name="authors">
+  <label *ngFor="let author of availableAuthors">
+    <input type="checkbox" name="{{author}}"
+      (change)="onChange($event)" [checked]="authorsInclude(author)">
+      {{author}}
+  </label>
+</fieldset>

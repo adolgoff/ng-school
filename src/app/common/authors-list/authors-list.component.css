@@ -1,0 +1,10 @@
+fieldset {
+  padding: 0;
+  border: none;
+  height: 80px;
+  overflow: auto;
+}
+
+fieldset label {
+  display: block;
+}

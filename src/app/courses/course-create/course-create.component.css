@@ -4,26 +4,55 @@
   margin: 0 auto;
 }
 
-:host div {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
+:host h4{
+  text-align: center;
+}
+
+:host > div {
+  display: block;
   padding: 50px;
   margin: 100px auto;
   width: 500px;
   background: rgba(0,0,0,.1);
 }
 
-:host div form {
-  width: 500px;
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  grid-gap: 5px;
+:host form {
+  display: table;
+  width: 100%;
 }
 
-:host div form * {
+:host form > div {
+  display: table-row;
+  position: relative;
+}
+
+:host form > div label {
+  display: table-cell;
+  width: 30%;
+}
+:host form > div input,
+:host form > div textarea,
+:host form > div authors-list {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  border: 1px solid rgba(0,0,0,.1);
+}
+
+:host form * {
   font-size: 13px;
+}
+
+:host form > div > .ng-invalid {
+  border: 1px solid red;
+}
+
+:host form > div[error]:after {
+  display: block;
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+  content: attr(error);
 }
 
 :host div form > input,
@@ -36,20 +65,11 @@
 
 :host div form > section {
   border: none;
+  width: 70%;
+  position: relative;
+  right: 0;
 }
 
-:host div form > fieldset {
-  padding: 0;
-}
-
-:host div form > fieldset label {
-  display: block;
-}
-
-:host div form > label  {
-  grid-column: 1/2;
-  text-align: right;
-}
 :host div form button {
   display: inline-block;
   margin: 10px 10px 0 0;
