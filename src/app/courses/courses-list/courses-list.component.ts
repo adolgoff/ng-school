@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {
   Component,
   OnInit,
@@ -6,7 +7,6 @@ import {
 import { Observable, Subscription } from 'rxjs/Rx';
 import { CoursesList, Course } from 'app/models/course';
 import { CoursesService } from 'app/services/courses.service';
-import { AppState } from 'app/app.service';
 
 @Component({
   selector: 'courses-list',
@@ -19,8 +19,8 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   private courseToDelete: Course;
   private coursesSubscription: Subscription;
   constructor(
-    public appState: AppState,
     private courseService: CoursesService,
+    private router: Router,
   ) {}
 
   public async ngOnInit() {
@@ -33,7 +33,7 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   public editCourse(courseObj: Course) {
-    console.log(`Edit course with ID ${courseObj.id}`);
+    this.router.navigate([`courses/${courseObj.slug}`]);
   }
 
   public deleteCourse(courseObj: Course, dialog: any) {

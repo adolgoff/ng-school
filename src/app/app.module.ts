@@ -1,3 +1,4 @@
+import { AppGuard } from 'app/app.routes';
 import { AuthorsService } from 'app/services/authors.service';
 import { CoursesService } from 'app/services/courses.service';
 import { AuthService } from 'app/services/auth.service';
@@ -44,7 +45,8 @@ const APP_PROVIDERS = [
   AuthService,
   CoursesService,
   AuthorsService,
-  AppState
+  AppState,
+  AppGuard,
 ];
 
 type StoreType = {

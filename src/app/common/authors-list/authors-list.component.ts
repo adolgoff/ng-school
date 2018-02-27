@@ -1,5 +1,6 @@
 import { AuthorsService } from 'app/services/authors.service';
 import {
+  OnInit,
   Component,
   EventEmitter,
   forwardRef,
@@ -49,6 +50,7 @@ export class AuthorsListComponent implements ControlValueAccessor, Validator {
 
   public writeValue(obj: any) {
     this.authors = obj && obj.toString().split(',').map((a) => a.trim()) || [];
+    this.onChange();
   }
 
   public registerOnChange(fn: any) {
@@ -59,6 +61,11 @@ export class AuthorsListComponent implements ControlValueAccessor, Validator {
   public registerOnTouched(fn: any) {
     this.onTouched = fn;
   }
+
+  // public ngOnInit() {
+  //   // handle async issues of registerOnChange
+  //   this.onChange();
+  // }
 
   public authorsInclude(author: string) {
     return this.authors.indexOf(author) > -1;
@@ -75,6 +82,8 @@ export class AuthorsListComponent implements ControlValueAccessor, Validator {
       }
     }
     this.parseError = this.authors.length === 0;
-    this.propagateChange(this.authors.join(', '));
+    if (this.propagateChange) {
+      this.propagateChange(this.authors.join(', '));
+    }
   }
 }

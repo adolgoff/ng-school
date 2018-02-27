@@ -14,7 +14,7 @@ const OUTDATED_FILTER = (course: Course): boolean => {
 export class CoursesService {
   // private list: Observable<CoursesList>;
   private list: BehaviorSubject<CoursesList> = new BehaviorSubject<CoursesList>([]);
-
+  private course: BehaviorSubject<Course> = new BehaviorSubject<Course>({});
   constructor(private http: AuthorizedHttp) {}
 
   public getList(searchTerm: string = null): Observable<CoursesList> {
@@ -30,8 +30,12 @@ export class CoursesService {
     return true;
   }
 
-  public async getItemById(id: number): Promise<Course> {
-    return null;
+  public getItemBySlug(slug: string): Observable<Course> {
+    this.http.get<CoursesList>('/assets/mock-data/mock-data.json', {params:{slug}})
+      .subscribe((response: CoursesList) =>
+        this.course.next(response.find((course: Course) => course.slug === slug)),
+      );
+    return this.course.asObservable();
   }
 
   public async updateItem(id: number): Promise<boolean> {

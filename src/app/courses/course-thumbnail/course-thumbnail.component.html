@@ -1,11 +1,11 @@
 <img src="{{courseDetail.thumbnail}}" alt="">
 <div class="description">
-  <header><a href="{{courseDetail.permalink}}">{{courseDetail.title | uppercase}}</a></header>
+  <header><a routerLink="/courses/{{courseDetail.slug}}">{{courseDetail.title | uppercase}}</a></header>
   <section>
     {{courseDetail.description}}
   </section>
   <footer>
-    Author: {{courseDetail.author.first}} {{courseDetail.author.last}}. Starts at {{courseDetail.date | date:'mediumDate'}}
+    Author: {{courseDetail.author}}. Starts at {{courseDetail.date | date:'mediumDate'}}
   </footer>
 </div>
 <div class="details">

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CoursesService } from 'app/services/courses.service';
 import {
   Component,
@@ -13,7 +14,7 @@ import {
 export class ToolbarComponent {
   public searchString: string = '';
 
-  constructor(private courseService: CoursesService) {}
+  constructor(private courseService: CoursesService, public router: Router) {}
 
   public search() {
     this.courseService.getList(this.searchString);

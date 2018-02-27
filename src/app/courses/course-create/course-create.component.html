@@ -7,7 +7,7 @@
 
     <div [attr.error]="title.errors && title.errors['required'] ? 'Title field is required' : null">
       <label for="title">Title</label>
-      <input placeholder="Title" maxlength="50" name="title"
+      <input placeholder="Title" maxlength="100" name="title"
       [(ngModel)]="course.title" required #title="ngModel">
     </div>
 

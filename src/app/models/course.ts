@@ -10,7 +10,7 @@ export interface Course {
   description?: string;
   date?: string;
   length?: number;
-  permalink?: string;
+  slug?: string;
   thumbnail?: string;
   deleted?: boolean;
   top?: boolean;
