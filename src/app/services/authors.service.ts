@@ -2,7 +2,7 @@ import { Observable, BehaviorSubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // import { catchError } from 'rxjs/operators';
-import { AuthorizedHttp } from 'app/services/authorized-http';
+import { AuthorizedHttp } from 'app/services/tools/authorized-http';
 
 @Injectable()
 export class AuthorsService {

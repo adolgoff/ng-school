@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // import { catchError } from 'rxjs/operators';
 import { CoursesList, Course } from '../models/course';
-import { AuthorizedHttp } from 'app/services/authorized-http';
+import { AuthorizedHttp } from 'app/services/tools/authorized-http';
 
 const MSEC_14_DAYS: number = 1209600000;
 const OUTDATED_FILTER = (course: Course): boolean => {

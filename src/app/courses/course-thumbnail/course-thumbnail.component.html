@@ -14,6 +14,6 @@
       {{courseDetail.length | timeFormat}}
     </span>
   </div>
-  <button (click)="editCourse($event)">Edit</button>
-  <button (click)="deleteCourse($event)">Delete</button>
+  <button (click)="edit.emit(courseDetail)">Edit</button>
+  <button (click)="delete.emit(courseDetail)">Delete</button>
 </div>

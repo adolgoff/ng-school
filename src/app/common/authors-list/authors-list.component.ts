@@ -68,7 +68,7 @@ export class AuthorsListComponent implements ControlValueAccessor, Validator {
   // }
 
   public authorsInclude(author: string) {
-    return this.authors.indexOf(author) > -1;
+    return this.authors.includes(author);
   }
 
   public onChange(event?: any) {

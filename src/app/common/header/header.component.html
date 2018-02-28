@@ -1,6 +1,7 @@
 <logo></logo>
 <h1>{{pageTitle}}</h1>
-<auth-section
-  [first]='user.first'
-  [last]='user.last'
- *ngIf="!!user"></auth-section>
+<auth-section *ngIf="user as u"
+  [first]='u.first'
+  [last]='u.last'
+  (logout)="actions.logout()"
+ ></auth-section>

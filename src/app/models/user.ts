@@ -1,9 +1,9 @@
 export interface User {
-  id: number;
-  guid: string;
-  nickname: string;
-  first: string;
-  last: string;
-  email: string;
-  thumbnail: string;
+  readonly id: number;
+  readonly guid: string;
+  readonly nickname: string;
+  readonly first: string;
+  readonly last: string;
+  readonly email: string;
+  readonly thumbnail: string;
 }

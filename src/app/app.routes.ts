@@ -22,7 +22,8 @@ export class AppGuard implements CanActivate {
     } else {
       this.router.navigate(['login'], {
         queryParams: { returnUrl: state.url },
-        skipLocationChange: true});
+        skipLocationChange: true,
+      });
     }
   }
 }

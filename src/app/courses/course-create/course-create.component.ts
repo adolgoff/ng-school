@@ -33,8 +33,7 @@ export class CourseCreateComponent implements OnDestroy{
    * Creates a course on a backend
    * @memberOf CourseCreateComponent
    */
-  public submit(event, form): void {
+  public submit(): void {
     console.log('Create course');
-    debugger;
   }
 }

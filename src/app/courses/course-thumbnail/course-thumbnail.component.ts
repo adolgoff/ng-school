@@ -17,12 +17,4 @@ export class CoursesThumbnailComponent {
   @Input() public courseDetail: Course;
   @Output() public edit = new EventEmitter();
   @Output() public delete = new EventEmitter();
-
-  public editCourse(event) {
-    this.edit.emit(this.courseDetail);
-  }
-
-  public deleteCourse(event) {
-    this.delete.emit(this.courseDetail);
-  }
 }

@@ -123,7 +123,7 @@ interface ErrorStackTraceLimit {
 }
 
 interface HTMLDialogElement extends HTMLElement {
-  open: Boolean;
+  open: boolean;
   returnValue: string;
   show(): void;
   close(result?): void;

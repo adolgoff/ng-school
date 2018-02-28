@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AppState } from 'app/app.service';
 import { AuthService } from 'app/services/auth.service';
 import { Router } from '@angular/router';
@@ -11,15 +11,5 @@ import { Router } from '@angular/router';
 export class AuthSectionComponent {
   @Input() public first: string;
   @Input() public last: string;
-
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) {}
-
-  public signOut() {
-    if (this.authService.logout()) {
-      this.router.navigate(['/login']);
-    }
-  }
+  @Output() public logout = new EventEmitter();
 }

@@ -2,6 +2,8 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpHandler, HttpEvent, HttpParams } from '@angular/common/http';
 import { AuthService } from 'app/services/auth.service';
+import { Store } from '@ngrx/store';
+import { RootState } from '../../redux/root.reducer';
 
 export interface RequestOptions {
   headers?: HttpHeaders | { [header: string]: string | string[]; };
@@ -28,9 +30,10 @@ export class AuthorizedHttp {
     'Accept': 'application/json',
   });
 
-  constructor(private http: HttpClient, authService: AuthService){
-    authService.getUserObservable().subscribe((auth: any) =>
-      this.token = auth && auth.token);
+  constructor(private http: HttpClient, store: Store<RootState>){
+    store.select((state) => state.login.user).subscribe((user: any) => {
+      this.token = user && user.token;
+    });
   }
 
   public get<T>(url: string, options?: RequestOptions): Observable<T> {
